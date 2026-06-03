@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Number Guessing Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="card" id="card">
+    <div class="header">
+      <div class="badge">Game / Validator / Checker</div>
+      <h1>Guess the <span>Number</span></h1>
+      <p class="subtitle">Between 1 and 100 &mdash; you have 10 attempts</p>
+    </div>
+
+    <div class="attempts-bar">
+      <div class="attempts-label">
+        <span>Attempts</span>
+        <span id="attempt-counter">0 / 10</span>
+      </div>
+      <div class="bar-track">
+        <div class="bar-fill" id="bar"></div>
+      </div>
+    </div>
+
+    <div class="message-box" id="msg-box">
+      <div class="dot"></div>
+      <span id="msg-text">Enter your guess and press &ldquo;Check&rdquo;.</span>
+    </div>
+
+    <div class="input-row">
+      <input type="number" id="guess-input" min="1" max="100" placeholder="1 – 100" />
+      <button id="check-btn">Check</button>
+    </div>
+
+    <div class="history">
+      <div class="history-title">Guesses</div>
+      <div class="history-chips" id="chips"></div>
+    </div>
+
+    <div class="action-row" id="action-row" style="display:none;">
+      <button id="play-again-btn">Play again</button>
+      <button class="btn-secondary" id="quit-btn">Quit</button>
+    </div>
+  </div>
+
+  <p class="footer-note">by Abdelrahman Refaat &mdash; OOP Java &rarr; Web</p>
+
+  <script src="game.js"></script>
+
+</body>
+</html>
