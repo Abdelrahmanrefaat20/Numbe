@@ -33,10 +33,15 @@ public class Game {
 
     public String checkGuess(int guess) {
         attempts++;
-        if (number == guess)  return "Correct";
-        if (number > guess)   return "Too Low";
-        return "Too High";
+        int near = Math.abs(guess - number);
+
+        if (number == guess) return "Correct";
+        if (near <= 5)       return "Too near!";
+        if (near <= 10)      return "Close!";
+        if (number > guess)  return "Too Low";
+        return                      "Too High";
     }
+
     public boolean isGameOver() {
         return attempts >= maxAttempts;
     }

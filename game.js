@@ -38,8 +38,11 @@ class Game {
 
   checkGuess(guess) {
     this.#attempts++;
+    const near = Math.abs(this.#number - guess);
     if (this.#number === guess) return "Correct";
-    if (this.#number  >  guess) return "Too Low";
+    if (near <= 5)  return this.#number > guess ? "Too Low|near"  : "Too High|near";
+    if (near <= 10) return this.#number > guess ? "Too Low|close" : "Too High|close";
+    if (this.#number > guess) return "Too Low";
     return "Too High";
   }
 }
@@ -74,10 +77,11 @@ function updateBar(attempts) {
   bar.className = "bar-fill" + (attempts >= 8 ? " danger" : attempts >= 6 ? " warn" : "");
 }
 
-function addChip(guess, result) {
+function addChip(guess, direction, proximity) {
   const chip = document.createElement("span");
-  chip.className = "chip " + (result === "Correct" ? "correct" : result === "Too High" ? "high" : "low");
-  chip.textContent = guess;
+  const base = direction === "Correct" ? "correct" : direction === "Too High" ? "high" : "low";
+  chip.className = "chip " + base + (proximity ? " " + proximity : "");
+  chip.textContent = proximity === "near" ? guess + " 🔥" : proximity === "close" ? guess + " 🌡️" : guess;
   chips.appendChild(chip);
 }
 
@@ -119,17 +123,21 @@ function handleGuess() {
   }
 
   const result = game.checkGuess(guess);
-  addChip(guess, result);
+  const [direction, proximity] = result.split("|");
+  addChip(guess, direction, proximity);
   updateBar(game.getAttempts());
   counter.textContent = game.getAttempts() + " / " + game.getMaxAttempts();
   input.value = "";
 
-  if (result === "Correct") { endGame(true);  return; }
-  if (game.isGameOver())    { endGame(false); return; }
+  if (direction === "Correct") { endGame(true);  return; }
+  if (game.isGameOver())       { endGame(false); return; }
 
-  const hint = result === "Too High" ? "Too High ↓" : "Too Low ↑";
-  const type = result === "Too High" ? "high" : "low";
-  setMessage(hint + " — " + game.getRemaining() + " attempt" + (game.getRemaining() === 1 ? "" : "s") + " remaining.", type);
+  const arrow    = direction === "Too High" ? "↓" : "↑";
+  const type     = direction === "Too High" ? "high" : "low";
+  const nearHint = proximity === "near"  ? " 🔥 You're too near!"
+                 : proximity === "close" ? " 🌡️ You're close!"
+                 : "";
+  setMessage(direction + " " + arrow + nearHint + " — " + game.getRemaining() + " attempt" + (game.getRemaining() === 1 ? "" : "s") + " remaining.", type + (proximity ? " " + proximity : ""));
   input.focus();
 }
 

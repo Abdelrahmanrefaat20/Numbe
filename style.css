@@ -187,11 +187,15 @@ button:disabled { opacity: 0.4; cursor: not-allowed; }
   word-break: break-word;
 }
 
-.message-box.correct { border-color: var(--success); color: var(--success); }
-.message-box.high    { border-color: var(--warn);    color: var(--warn); }
-.message-box.low     { border-color: #60a5fa;        color: #60a5fa; }
-.message-box.invalid { border-color: var(--danger);  color: var(--danger); }
-.message-box.lose    { border-color: var(--danger);  color: var(--danger); }
+.message-box.correct   { border-color: var(--success); color: var(--success); }
+.message-box.high      { border-color: var(--warn);    color: var(--warn); }
+.message-box.low       { border-color: #60a5fa;        color: #60a5fa; }
+.message-box.invalid   { border-color: var(--danger);  color: var(--danger); }
+.message-box.lose      { border-color: var(--danger);  color: var(--danger); }
+.message-box.high.near,
+.message-box.low.near  { border-color: #f97316; color: #f97316; box-shadow: 0 0 8px rgba(249,115,22,0.3); }
+.message-box.high.close,
+.message-box.low.close { border-color: #fb923c; color: #fb923c; }
 
 .dot {
   width: 8px;
@@ -235,6 +239,8 @@ button:disabled { opacity: 0.4; cursor: not-allowed; }
 .chip.high    { border-color: #a16207; color: var(--warn); }
 .chip.low     { border-color: #1e40af; color: #60a5fa; }
 .chip.correct { border-color: #166534; color: var(--success); }
+.chip.near    { border-color: #f97316; color: #f97316; }
+.chip.close   { border-color: #fb923c; color: #fb923c; }
 
 /* ── Action row ── */
 .action-row {

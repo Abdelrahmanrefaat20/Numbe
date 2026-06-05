@@ -1,68 +1,51 @@
 # Number Guessing Game
 
-A number guessing game built with Java OOP — and deployed as a web app via GitHub Pages.
+A simple Java console game where you guess a randomly generated number between 1 and 100.
+
+---
+
+## How to Play
+
+1. Open the project in IntelliJ IDEA
+2. Run the `Main` class
+3. Enter your guess when prompted
+4. You have **10 attempts** to find the number
+
+---
+
+## Example
+
+```
+Welcome! Guess a number between 1 and 100. You have 10 attempts.
+Attempt 1/10 — Enter your guess: 50
+Too High! 9 attempts remaining.
+Attempt 2/10 — Enter your guess: 25
+Too Low! 8 attempts remaining.
+Attempt 3/10 — Enter your guess: 37
+Correct! You guessed it in 3 attempts.
+Play again? (yes/no):
+```
 
 ---
 
 ## Project Structure
 
 ```
-NumberGuessingGame/
-├── src/
-│   ├── App/
-│   │   └── Main.java          ← game loop & UI (JOptionPane)
-│   └── Game/
-│       ├── Game.java          ← core game logic
-│       ├── Checker.java       ← validator interface
-│       └── Validator.java     ← input validation
-├── web/
-│   └── index.html             ← web version (GitHub Pages)
-└── README.md
-```
-
----
-
-## How to Run the Java Version
-
-1. Open the project in IntelliJ IDEA
-2. Run `src/App/Main.java`
-3. Guess a number between 1 and 100 — you have 10 attempts
-
----
-
-## How to Deploy the Web Version (GitHub Pages)
-
-### Step 1 — Push to GitHub
-
-```bash
-git init
-git add .
-git commit -m "Add Number Guessing Game"
-git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/Number-Guessing-Game.git
-git push -u origin main
-```
-
-### Step 2 — Enable GitHub Pages
-
-1. Go to your repo on GitHub
-2. Click **Settings** → **Pages**
-3. Under **Source**, select `main` branch and set folder to `/web`
-4. Click **Save**
-
-### Step 3 — Your game is live at:
-
-```
-https://YOUR_USERNAME.github.io/Number-Guessing-Game/
+App/
+  Main.java         — game loop and I/O
+Game/
+  Game.java         — game logic
+  Checker.java      — validator interface
+  Validator.java    — input validation
 ```
 
 ---
 
 ## Technologies
 
-- Java (OOP, SOLID principles, interfaces, exception handling)
-- HTML / CSS / JavaScript (same OOP structure as the Java code)
-- GitHub Pages (free hosting)
+- Java
+- OOP and SOLID principles
+- Exception handling
 
 ---
 
